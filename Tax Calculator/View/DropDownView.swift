@@ -14,6 +14,7 @@ struct DropDownView: View {
     
     @State private var isExpanded = false
     @Binding var selection: String?
+    @Environment(\.colorScheme) var scheme
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,6 +35,7 @@ struct DropDownView: View {
                         .rotationEffect(.degrees(isExpanded ? -180 : 0))
                 }
                 .frame(height: 40)
+                .background(scheme == .dark ? .black : .white)
                 .padding(.horizontal)
                 .onTapGesture {
                     withAnimation(.snappy) {
@@ -68,10 +70,10 @@ struct DropDownView: View {
                     .transition(.move(edge: .bottom))
                 }
             }
-            .background(.white)
+            .background(scheme == .dark ? .black : .white)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .shadow(radius: 4)
-            .frame(width: 160)
+            .shadow(color: .primary.opacity(0.2), radius: 4)
+            .frame(width: 195)
         }
     }
 }
@@ -79,8 +81,8 @@ struct DropDownView: View {
 
 #Preview {
     DropDownView(title: "Tax Regime", prompt: "Select", options: [
-        "Old Regime",
-        "New Regime",
-        "New Regime [2024]"
-    ], selection: .constant("Old Regime"))
+        "Old",
+        "New",
+        "New [Budget 2024]"
+    ], selection: .constant("Old"))
 }
