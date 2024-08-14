@@ -62,12 +62,24 @@ struct ContentView: View {
     ]
     private let stdded = [
         "50000",
-        "50000",
         "75000"
     ]
+    
+    @State private var selectedRegime: String?
+    @State private var selStdDed: String?
+    
     var body: some View {
         VStack(spacing: 16) {
-            DropDownView(title: "Tax Regime", prompt: "Select", options: regime, selection: <#T##Binding<String?>#>)
+            DropDownView(title: "Tax Regime", 
+                         prompt: "Select", 
+                         options: regime,
+                         selection: $selectedRegime)
+            
+            DropDownView(title: "Standard Deduction",
+                         prompt: "Select",
+                         options: stdded,
+                         selection: $selStdDed)
+            
         }
     }
 }
