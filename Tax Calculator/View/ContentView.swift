@@ -55,10 +55,20 @@ import SwiftUI
 //    }
 //}
 struct ContentView: View {
+    private let regime = [
+        "Old",
+        "New",
+        "New 2024"
+    ]
+    private let stdded = [
+        "50000",
+        "50000",
+        "75000"
+    ]
     var body: some View {
-        Text("Welcome User!")
-            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 16) {
+            DropDownView(title: "Tax Regime", prompt: "Select", options: regime, selection: <#T##Binding<String?>#>)
+        }
     }
 }
 
